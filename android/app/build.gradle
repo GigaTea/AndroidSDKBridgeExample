@@ -184,8 +184,6 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    implementation "org.mockito:mockito-inline:+"
-
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     implementation files('libs/polar-ble-sdk.aar')
@@ -194,18 +192,7 @@ dependencies {
     implementation 'commons-io:commons-io:2.8.0' // Only needed if FEATURE_POLAR_FILE_TRANSFER used
     implementation 'com.google.protobuf:protobuf-javalite:3.14.0' // Only needed if FEATURE_POLAR_FILE_TRANSFER used
 
-    debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
-      exclude group:'com.facebook.fbjni'
-    }
 
-    debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.facebook.flipper'
-        exclude group:'com.squareup.okhttp3', module:'okhttp'
-    }
-
-    debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.facebook.flipper'
-    }
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

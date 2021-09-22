@@ -29,8 +29,6 @@ import com.polar.sdk.api.PolarBleApiDefaultImpl;
 import com.polar.sdk.api.errors.PolarInvalidArgument;
 import com.polar.sdk.api.model.*;
 
-import org.mockito.Mockito;
-
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,9 +42,7 @@ public class PolarSDKModule extends ReactContextBaseJavaModule {
 
     private CancellableDisposable scanDisposable;
 
-    private Context context = Mockito.mock(Context.class);
-
-    private PolarBleApi polarApi = PolarBleApiDefaultImpl.defaultImplementation(context, PolarBleApi.ALL_FEATURES);
+    private PolarBleApi polarApi = null;
 
     public PolarSDKModule(ReactApplicationContext context) {
         // Pass in the context to the constructor and save it so you can emit events
@@ -54,6 +50,8 @@ public class PolarSDKModule extends ReactContextBaseJavaModule {
         super(context);
 
         reactContext = context;
+
+        polarApi = PolarBleApiDefaultImpl.defaultImplementation(context, PolarBleApi.ALL_FEATURES);
     }
 
     @Override
